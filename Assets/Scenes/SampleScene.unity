@@ -5575,6 +5575,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 350
   moveBoost: 500
+  rotationSpeed: 1
   wait: 0
   isFacingLeft: 1
   rb: {fileID: 1740837390}
