@@ -5574,11 +5574,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 350
-  moveBoost: 400
+  moveBoost: 500
   wait: 0
-  facingLeft: 1
+  isFacingLeft: 1
   rb: {fileID: 1740837390}
-  target: {fileID: 1740837388}
+  trs: {fileID: 1740837388}
+  heliceAnimator: {fileID: 698599357}
 --- !u!50 &1740837390
 Rigidbody2D:
   serializedVersion: 4
