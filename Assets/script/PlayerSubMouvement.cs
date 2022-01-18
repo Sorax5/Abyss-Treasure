@@ -41,16 +41,30 @@ public class PlayerSubMouvement : MonoBehaviour
         canBoost = false;
     }
 
+    IEnumerator Grap()
+    {
+        GrapActive = true;
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        yield return new WaitForSeconds((float)1.5);
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        GrapActive = false;
+    }
+
     void Update()
     {
+
         float horizontalMovement = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         float verticalMovement = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
 
-        MovePlayer(horizontalMovement, verticalMovement);
-        Boost();
+
+        if (GrapActive == false)
+        {
+            MovePlayer(horizontalMovement, verticalMovement);
+            Boost();
+        }
 
         SousMarinsAnimator.SetBool("GrapActive", GrapActive);
-
         grappin();
 
         float characterVelocity = Mathf.Abs(rb.velocity.x);
@@ -128,9 +142,9 @@ public class PlayerSubMouvement : MonoBehaviour
 
     void grappin()
     {
-        if (Input.GetKey(KeyCode.E) && GrapActive == false)
+        if (Input.GetKeyDown(KeyCode.E) && GrapActive == false)
         {
-            GrapActive = true;
+            StartCoroutine(Grap());
         }
     }
 }
