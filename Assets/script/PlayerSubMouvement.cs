@@ -76,7 +76,7 @@ public class PlayerSubMouvement : MonoBehaviour
         Vector3 targetVelocity = new Vector2(_horizontalMovement, _verticalMovement);
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, .05f);
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             if (!isFacingLeft)
             {
@@ -84,7 +84,7 @@ public class PlayerSubMouvement : MonoBehaviour
                 isFacingLeft = true;
             }
 
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
             {
                 Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward, targetVelocity - trs.position);
                 desiredRotation = Quaternion.Euler(0, 0, -45);
@@ -92,7 +92,7 @@ public class PlayerSubMouvement : MonoBehaviour
                 StartCoroutine(RotationWaiting());
             }
 
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
             {
                 Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward, targetVelocity - trs.position);
                 desiredRotation = Quaternion.Euler(0, 0, 45);
@@ -101,7 +101,7 @@ public class PlayerSubMouvement : MonoBehaviour
             }
         }
         
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             if (isFacingLeft)
             {
@@ -109,7 +109,7 @@ public class PlayerSubMouvement : MonoBehaviour
                 isFacingLeft = false;
             }
 
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
             {
                 Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward, targetVelocity - trs.position);
                 desiredRotation = Quaternion.Euler(0, 0, 45);
@@ -117,7 +117,7 @@ public class PlayerSubMouvement : MonoBehaviour
                 StartCoroutine(RotationWaiting());
             }
 
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
             {
                 Quaternion desiredRotation = Quaternion.LookRotation(Vector3.forward, targetVelocity - trs.position);
                 desiredRotation = Quaternion.Euler(0, 0, -45);

@@ -9,8 +9,8 @@ public class FischPatrol : MonoBehaviour
 
     public SpriteRenderer graphics;
     private Transform target;
+    private bool sens = true;
     private int destPoint = 0;
-    private int oldPoint = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +26,29 @@ public class FischPatrol : MonoBehaviour
 
         if(Vector3.Distance(transform.position, target.position) < 0.3f)
         {
-            oldPoint = destPoint;
-            destPoint = (destPoint + 1 ) % waypoints.Length;
+
+            if(sens)
+            {
+                destPoint += 1;
+                graphics.flipX = false;
+            }
+            else
+            {
+                destPoint -= 1;
+                graphics.flipX = true;
+            }
+
             target = waypoints[destPoint];
-            graphics.flipX = !graphics.flipX;
+            
+
+            if(destPoint == waypoints.Length-1)
+            {
+                sens = false;
+            }
+            else if(destPoint == 0)
+            {
+                sens = true;
+            }
         }
         
     }
