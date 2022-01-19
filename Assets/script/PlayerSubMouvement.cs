@@ -45,7 +45,7 @@ public class PlayerSubMouvement : MonoBehaviour
     {
         GrapActive = true;
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        yield return new WaitForSeconds((float)1.5);
+        yield return new WaitForSeconds((float)1);
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         GrapActive = false;
